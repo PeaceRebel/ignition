@@ -23,12 +23,13 @@ all:
 .PHONY: install
 install: all
 	if [ $(INSTALL_ALL_DRACUT_MODULES) -eq 1 ]; then \
-		for x in dracut/*; do \
+		for x in dracut/modules.d/*; do \
 			bn=$$(basename $$x); \
 			install -m 0644 -D -t $(DESTDIR)/usr/lib/dracut/modules.d/$${bn} $$x/*; \
 		done; \
+		install -m 0644 -D -t $(DESTDIR)/usr/lib/dracut/dracut.conf.d dracut/dracut.conf.d/*; \
 	else \
-		install -m 0644 -D -t $(DESTDIR)/usr/lib/dracut/modules.d/30ignition dracut/30ignition/*; \
+		install -m 0644 -D -t $(DESTDIR)/usr/lib/dracut/modules.d/30ignition dracut/modules.d/30ignition/*; \
 	fi
 
 	chmod a+x $(DESTDIR)/usr/lib/dracut/modules.d/*/*.sh $(DESTDIR)/usr/lib/dracut/modules.d/*/*-generator
