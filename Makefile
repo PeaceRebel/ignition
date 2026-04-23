@@ -27,6 +27,9 @@ install: all
 			bn=$$(basename $$x); \
 			install -m 0644 -D -t $(DESTDIR)/usr/lib/dracut/modules.d/$${bn} $$x/*; \
 		done; \
+		install -m 755  -D -t $(DESTDIR)/usr/libexec scripts/libexec/ignition-write-issues; \
+		install -m 0644 -D -t $(DESTDIR)/usr/lib/systemd/system systemd/ignition-write-issues.service; \
+		install -m 0644 -D -t $(DESTDIR)/usr/lib/systemd/system-preset systemd/system-preset/40-ignition.preset; \
 	else \
 		install -m 0644 -D -t $(DESTDIR)/usr/lib/dracut/modules.d/30ignition dracut/30ignition/*; \
 	fi
