@@ -30,6 +30,7 @@ install: all
 		install -m 755  -D -t $(DESTDIR)/usr/libexec scripts/libexec/ignition-write-issues; \
 		install -m 0644 -D -t $(DESTDIR)/usr/lib/systemd/system systemd/ignition-write-issues.service; \
 		install -m 0644 -D -t $(DESTDIR)/usr/lib/systemd/system-preset systemd/system-preset/40-ignition.preset; \
+		install -m 0755 -D -t $(DESTDIR)/usr/lib/systemd/system-generators systemd/system-generators/*; \
 		install -m 0644 -D -t $(DESTDIR)/usr/lib/dracut/dracut.conf.d dracut/dracut.conf.d/*; \
 	else \
 		install -m 0644 -D -t $(DESTDIR)/usr/lib/dracut/modules.d/30ignition dracut/modules.d/30ignition/*; \
