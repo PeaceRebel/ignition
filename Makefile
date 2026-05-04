@@ -22,7 +22,7 @@ all:
 
 .PHONY: install
 install: all
-	if [ $(INSTALL_ALL_DRACUT_MODULES) -eq 1 ]; then \
+	if [ $(WITH_INTEGRATION) -eq 1 ]; then \
 		for x in dracut/modules.d/*; do \
 			bn=$$(basename $$x); \
 			install -m 0644 -D -t $(DESTDIR)/usr/lib/dracut/modules.d/$${bn} $$x/*; \
